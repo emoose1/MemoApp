@@ -16,6 +16,7 @@ public class MemoDatabaseHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
     private static final String COL1 = "importanceID";
     private static final String COL2 = "memoText";
+    private static final String COL3 = "memoDate";
 
 
     public MemoDatabaseHelper(Context context){

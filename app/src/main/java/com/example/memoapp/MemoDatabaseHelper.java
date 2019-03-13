@@ -11,21 +11,26 @@ import android.content.ContentValues;
 
 public class MemoDatabaseHelper extends SQLiteOpenHelper {
 
-    private static final String TAG = "MemoDatabaseHelper";
-    private static final String TABLE_NAME = "memo_table";
+    private static final String DATABASE_NAME = "memo.db";
     private static final int DATABASE_VERSION = 1;
-    private static final String COL1 = "importanceID";
+    /*private static final String COL1 = "priorityID";
     private static final String COL2 = "memoText";
     private static final String COL3 = "memoDate";
+    private int _id;
+    */
 
+    private static final String CREATE_TABLE_MEMO =
+            "create table memo (_id integer primary key autoincrement, "
+            + " memoText text not null, memoDate Calendar, "
+            + "priorityID int);";
 
     public MemoDatabaseHelper(Context context){
-        super(context, TABLE_NAME, null, DATABASE_VERSION);
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
 
     }
 
     @Override
-    public void onCreate(SQLiteDatabase db) {
+    public void onCreate(SQLiteDatabase db) { db.execSQL(CREATE_TABLE_MEMO);
 
     }
 

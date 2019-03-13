@@ -6,6 +6,8 @@ public class Memo {
     private int memoID;
     private String memoNotes;
     private Calendar dateCreated;
+    private int priorityID;
+
 
 
     public Memo() {
@@ -15,6 +17,12 @@ public class Memo {
 
     }
 
+    public int getMemoID() {
+        return memoID;
+    }
+    public void setMemoID(int i) {
+        memoID = i;
+    }
     public String getMemoNotes() {
         return memoNotes;
     }
@@ -27,4 +35,6 @@ public class Memo {
     public void setDateCreated(Calendar c) {
         dateCreated = c;
     }
+    public int getPriorityID(){return priorityID;}
+    public void setPriorityID(int i){priorityID = i;}
 }

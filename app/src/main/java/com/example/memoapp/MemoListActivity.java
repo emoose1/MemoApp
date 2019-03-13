@@ -1,5 +1,6 @@
 package com.example.memoapp;
 
+import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -9,9 +10,12 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
-public class MemoListActivity extends AppCompatActivity {
+import java.util.ArrayList;
+
+public class MemoListActivity  extends ListActivity {
     boolean isDeleting = false;
     MemoAdapter adapter;
+    ArrayList<Memo> memos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,13 +49,13 @@ public class MemoListActivity extends AppCompatActivity {
             ds.open();
             memos = ds.getMemos(sortBy);
             ds.close();
-            if (contacts.size() > 0) {
+            if (memos.size() > 0) {
                 ListView listView = getListView();
-                adapter = new ContactAdapter(this, contacts);
+                adapter = new MemoAdapter(this, memos);
                 listView.setAdapter(adapter);
             }
             else {
-                Intent intent = new Intent(ContactListActivity.this, ContactActivity.class);
+                Intent intent = new Intent(MemoListActivity.this, MemoActivity.class);
                 startActivity(intent);
             }
         }

@@ -6,6 +6,7 @@ import android.database.DatabaseErrorHandler;
 import android.util.Log;
 import android.content.Context;
 import android.content.ContentValues;
+import java.util.Calendar;
 
 
 
@@ -36,6 +37,9 @@ public class MemoDatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+    Log.w(MemoDatabaseHelper.class.getName(), "Upgrade database from verson "
+            + oldVersion + " to " + newVersion + " which will destroy all old data");
+    db.execSQL("DROP TABLE IF EXISTS memo");
+    onCreate(db);
     }
 }

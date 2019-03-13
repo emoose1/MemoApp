@@ -79,15 +79,15 @@ public class MainActivity extends AppCompatActivity {
                         RadioButton rbHigh = (RadioButton) findViewById(R.id.high);
                         if (rbLow.isChecked()) {
 
-                            rbLow.setChecked(true); currentMemo.setPriorityID(1);
+                             currentMemo.setPriorityID(1);
                         }
                         else if (rbMedium.isChecked()) {
 
-                            rbMedium.setChecked(true); currentMemo.setPriorityID(2);
+                             currentMemo.setPriorityID(2);
                         }
                         else {
 
-                            rbHigh.setChecked(true); currentMemo.setPriorityID(3);
+                            currentMemo.setPriorityID(3);
                         }
                     }
                 });

@@ -69,11 +69,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // hideKeyboard();
-                RadioGroup rgPriority = (RadioGroup) findViewById(R.id.radioGroupPriority);
-                rgPriority.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 
-                    @Override
-                    public void onCheckedChanged(RadioGroup arg0, int arg1) {
+
                         RadioButton rbLow = (RadioButton) findViewById(R.id.low);
                         RadioButton rbMedium = (RadioButton) findViewById(R.id.medium);
                         RadioButton rbHigh = (RadioButton) findViewById(R.id.high);
@@ -89,8 +86,7 @@ public class MainActivity extends AppCompatActivity {
 
                             currentMemo.setPriorityID(3);
                         }
-                    }
-                });
+
                 boolean wasSuccessful = false;
                 MemoDataSource ds = new MemoDataSource(MainActivity.this);
                 try {

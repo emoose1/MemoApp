@@ -97,7 +97,7 @@ public class MemoListActivity  extends ListActivity {
         Button newContact = (Button) findViewById(R.id.buttonAdd);
         newContact.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(MemoListActivity.this, MemoActivity.class);
+                Intent intent = new Intent(MemoListActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });

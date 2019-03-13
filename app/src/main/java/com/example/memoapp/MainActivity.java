@@ -59,8 +59,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    /*   private void initPriority() {
-           RadioGroup rgPriority = (RadioGroup) findViewById(R.id.radioGroupSortBy);
+    private void initPriority() {
+           RadioGroup rgPriority = (RadioGroup) findViewById(R.id.radioGroupPriority);
            rgPriority.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 
                @Override
@@ -70,17 +70,20 @@ public class MainActivity extends AppCompatActivity {
                    RadioButton rbHigh = (RadioButton) findViewById(R.id.high);
                    if (rbLow.isChecked()) {
                        getSharedPreferences("MemoPriority", Context.MODE_PRIVATE).edit() .putString("sortfield", "low").commit();
+                       rbLow.setChecked(true);
                    }
                    else if (rbMedium.isChecked()) {
                        getSharedPreferences("MemoPriority", Context.MODE_PRIVATE).edit().putString("sortfield", "medium").commit();
+                       rbMedium.setChecked(true);
                    }
                    else {
                        getSharedPreferences("MemoPriority", Context.MODE_PRIVATE).edit().putString("sortfield", "high").commit();
+                       rbHigh.setChecked(true);
                    }
                }
            });
        }
-   */
+
     private void initSaveButton() {
         Button saveButton = (Button) findViewById(R.id.button2);
         saveButton.setOnClickListener(new View.OnClickListener() {

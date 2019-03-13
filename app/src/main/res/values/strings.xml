@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MemoApp</string>
+    <string name="title_activity_memo1">memo1</string>
 </resources>

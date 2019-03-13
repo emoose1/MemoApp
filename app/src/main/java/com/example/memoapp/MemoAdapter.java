@@ -41,10 +41,7 @@ public class MemoAdapter extends ArrayAdapter<Memo> {
             memoNotes.setText(memo.getMemoNotes());
             memoDate.setText(memo.getDateCreated());
             b.setVisibility(View.INVISIBLE);
-            String str="Date";
-            Calendar cal = Calendar.getInstance();
-            cal.setTime(new SimpleDateFormat("your date format").parse(str));
-            customerTodo.setCALCDATE(cal);
+            
         }
         catch (Exception e) {
             e.printStackTrace();

@@ -50,4 +50,44 @@ public class MemoAdapter extends ArrayAdapter<Memo> {
         return v;
     }
 
+    public void showDelete(final int position, final View convertView,final Context context, final Memo memo) {
+        View v = convertView;
+        final Button b = (Button) v.findViewById(R.id.buttonDeleteContact);
+        //2
+        if (b.getVisibility()==View.INVISIBLE) {
+            b.setVisibility(View.VISIBLE);
+            b.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    hideDelete(position, convertView, context);
+                    items.remove(memo);
+                    deleteOption(memo.getMemoID(), context);
+                }
+            });
+        }
+        else {
+            hideDelete(position, convertView, context);
+        }
+    }
+
+    private void deleteOption(int memoToDelete, Context context) {
+        MemoDataSource db = new MemoDataSource(context);
+        try {
+            db.open();
+            db.deleteMemo(memoToDelete);
+            db.close();
+        }
+        catch (Exception e) {
+            Toast.makeText(adapterContext, "Delete Contact Failed", Toast.LENGTH_LONG).show();
+        }
+        this.notifyDataSetChanged();
+    }
+    //4
+    public void hideDelete(int position, View convertView, Context context) {
+        View v = convertView;
+        final Button b = (Button) v.findViewById(R.id.buttonDeleteContact);
+        b.setVisibility(View.INVISIBLE);
+        b.setOnClickListener(null);
+    }
+
 }

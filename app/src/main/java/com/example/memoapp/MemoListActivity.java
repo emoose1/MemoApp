@@ -26,7 +26,7 @@ public class MemoListActivity  extends ListActivity {
 
         initItemClick();
         initDeleteButton();
-        
+        initAddNoteButton();
     }
 
     private void initDeleteButton() {
@@ -87,5 +87,16 @@ public class MemoListActivity  extends ListActivity {
                 }
             }
         });
+    }
+
+    private void initAddNoteButton() {
+        Button newContact = (Button) findViewById(R.id.buttonAdd);
+        newContact.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(MemoListActivity.this, MemoActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 }

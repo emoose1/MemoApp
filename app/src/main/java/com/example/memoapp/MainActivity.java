@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         initListButton();
         initSaveButton();
         initTextChangedEvents();
-        // initPriority();
+        initPriority();
 
         currentMemo = new Memo();
     }
@@ -58,9 +58,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-
-    /*   private void initPriority() {
-           RadioGroup rgPriority = (RadioGroup) findViewById(R.id.radioGroupSortBy);
+       private void initPriority() {
+           RadioGroup rgPriority = (RadioGroup) findViewById(R.id.radioGroup);
            rgPriority.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 
                @Override
@@ -80,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
                }
            });
        }
-   */
+
     private void initSaveButton() {
         Button saveButton = (Button) findViewById(R.id.button2);
         saveButton.setOnClickListener(new View.OnClickListener() {

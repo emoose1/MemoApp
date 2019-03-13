@@ -28,6 +28,7 @@ public class MemoListActivity  extends ListActivity {
         initItemClick();
         initDeleteButton();
         initAddNoteButton();
+        initSettings();
     }
 
     private void initDeleteButton() {
@@ -104,8 +105,8 @@ public class MemoListActivity  extends ListActivity {
     private void initSettings() {
         String sortBy = getSharedPreferences("MemoPriority", Context.MODE_PRIVATE).getString("sortfield","date");
 
-        RadioButton rbSortDate = (RadioButton) findViewById(R.id.);
-        RadioButton rbSortPriority = (RadioButton) findViewById(R.id.radioCity);
+        RadioButton rbSortDate = (RadioButton) findViewById(R.id.radioDate);
+        RadioButton rbSortPriority = (RadioButton) findViewById(R.id.radioImportance);
 
         if (sortBy.equalsIgnoreCase("date")) {
             rbSortDate.setChecked(true);
@@ -113,7 +114,7 @@ public class MemoListActivity  extends ListActivity {
         else if (sortBy.equalsIgnoreCase("priority")) {
             rbSortPriority.setChecked(true);
         }
-      
+
 
 
     }

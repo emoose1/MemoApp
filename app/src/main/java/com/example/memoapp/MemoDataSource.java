@@ -55,7 +55,7 @@ public class MemoDataSource {
             updateValues.put("memoNotes", m.getMemoNotes());
             updateValues.put("memoDate", String.valueOf(m.getDateCreated().getTimeInMillis()));
             updateValues.put("priorityID", m.getPriorityID());
-            didSucceed = database.update("memo", updateValues, "_id=" + rowId, null) > 0;
+            didSucceed = database.update("memo", updateValues, "memoID=" + rowId, null) > 0;
         }
         catch (Exception e) {
             //Do nothing -will return false if there is an exception
@@ -66,7 +66,7 @@ public class MemoDataSource {
     public int getLastMemoID() {
         int lastID = -1;
         try {
-            String query = "Select MAX(_id) from memo";
+            String query = "Select MAX(memoID) from memo";
             Cursor cursor = database.rawQuery(query, null);
 
             cursor.moveToFirst();

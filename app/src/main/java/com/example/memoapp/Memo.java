@@ -11,9 +11,8 @@ public class Memo {
 
 
     public Memo() {
-        memoID = -1;
+        memoID = getMemoID();
         dateCreated = Calendar.getInstance();
-
 
     }
 

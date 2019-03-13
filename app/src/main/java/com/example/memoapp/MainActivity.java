@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         initListButton();
         initSaveButton();
         initTextChangedEvents();
-        // initPriority();
+        initPriority();
 
         currentMemo = new Memo();
     }

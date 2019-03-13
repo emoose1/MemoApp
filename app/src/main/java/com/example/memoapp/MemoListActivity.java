@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -97,6 +98,23 @@ public class MemoListActivity  extends ListActivity {
                 startActivity(intent);
             }
         });
+
+    }
+
+    private void initSettings() {
+        String sortBy = getSharedPreferences("MemoPriority", Context.MODE_PRIVATE).getString("sortfield","date");
+
+        RadioButton rbSortDate = (RadioButton) findViewById(R.id.);
+        RadioButton rbSortPriority = (RadioButton) findViewById(R.id.radioCity);
+
+        if (sortBy.equalsIgnoreCase("date")) {
+            rbSortDate.setChecked(true);
+        }
+        else if (sortBy.equalsIgnoreCase("priority")) {
+            rbSortPriority.setChecked(true);
+        }
+      
+
 
     }
 }

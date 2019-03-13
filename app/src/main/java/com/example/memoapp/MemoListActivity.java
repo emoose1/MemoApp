@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -29,6 +30,7 @@ public class MemoListActivity  extends ListActivity {
         initDeleteButton();
         initAddNoteButton();
         initSettings();
+        initSortByClick();
     }
 
     private void initDeleteButton() {
@@ -50,7 +52,7 @@ public class MemoListActivity  extends ListActivity {
     @Override
     public void onResume() {
         super.onResume();
-        String sortBy = getSharedPreferences("MemoListPreferences", Context.MODE_PRIVATE).getString("sortorder", "date");
+        String sortBy = getSharedPreferences("MemoPriority", Context.MODE_PRIVATE).getString("sortorder", "date");
 
         MemoDataSource ds = new MemoDataSource(this);
         try {
@@ -117,5 +119,27 @@ public class MemoListActivity  extends ListActivity {
 
 
 
+
     }
+    private void initSortByClick(){
+        RadioGroup rgSortBy = (RadioGroup) findViewById(R.id.radioGroupSort);
+        rgSortBy.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(RadioGroup arg0, int arg1) {
+                RadioButton rbDate = (RadioButton) findViewById(R.id.radioDate);
+                RadioButton rbImportance = (RadioButton) findViewById(R.id.radioImportance);
+                if (rbDate.isChecked()) {
+                    getSharedPreferences("MemoPriority", Context.MODE_PRIVATE).edit() .putString("sortfield", "date").commit();
+                }
+                else if (rbImportance.isChecked()) {
+                    getSharedPreferences("MemoPriority", Context.MODE_PRIVATE).edit().putString("sortfield", "priority").commit();
+                }
+
+            }
+        });
+
+
+    }
+
 }

@@ -64,7 +64,6 @@
                 android:layout_above="@+id/radioGroupSort"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
-                android:layout_marginStart=""
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="15dp"
                 android:text="Sort Importance:" />

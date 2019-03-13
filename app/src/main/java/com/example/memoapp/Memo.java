@@ -21,20 +21,20 @@ public class Memo {
         return memoID;
     }
     public void setMemoID(int i) {
-        memoID = i;
+        this.memoID = i;
     }
     public String getMemoNotes() {
         return memoNotes;
     }
     public void setMemoNotes(String s) {
-        memoNotes = s;
+        this.memoNotes = s;
     }
     public Calendar getDateCreated() {
         return dateCreated;
     }
     public void setDateCreated(Calendar c) {
-        dateCreated = c;
+        this.dateCreated = c;
     }
     public int getPriorityID(){return priorityID;}
-    public void setPriorityID(int i){priorityID = i;}
+    public void setPriorityID(int i){this.priorityID = i;}
 }

@@ -87,18 +87,18 @@ public class MemoActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                //  hideKeyboard();
-              /*  boolean wasSuccessful = false;
-                ContactDataSource ds = new ContactDataSource(ContactActivity.this);
+                // hideKeyboard();
+                boolean wasSuccessful = false;
+                MemoDataSource ds = new MemoDataSource(MemoActivity.this);
                 try {
                     ds.open();
 
-                    if (currentContact.getContactID() == -1) {
-                        wasSuccessful = ds.insertContact(currentContact);
-                        int newId = ds.getLastContactId();
-                        currentContact.setContactID(newId);
+                    if (currentMemo.getMemoID() == -1) {
+                        wasSuccessful = ds.insertMemo(currentMemo);
+                        int newId = ds.getLastMemoID();
+                        currentMemo.setMemoID(newId);
                     } else {
-                        wasSuccessful = ds.updateContact(currentContact);
+                        wasSuccessful = ds.updateMemo(currentMemo);
                     }
                     ds.close();
                 }
@@ -106,7 +106,7 @@ public class MemoActivity extends AppCompatActivity {
                     wasSuccessful = false;
                 }
 
-                if (wasSuccessful) {
+              /*  if (wasSuccessful) {
                     ToggleButton editToggle = (ToggleButton) findViewById(R.id.toggleButtonEdit);
                     editToggle.toggle();
                     setForEditing(false);

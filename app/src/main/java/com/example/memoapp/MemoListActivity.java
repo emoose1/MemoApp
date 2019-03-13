@@ -10,7 +10,8 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 public class MemoListActivity extends AppCompatActivity {
-
+    boolean isDeleting = false;
+    MemoAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,13 +38,12 @@ public class MemoListActivity extends AppCompatActivity {
     @Override
     public void onResume() {
         super.onResume();
-        String sortBy = getSharedPreferences("MyContactListPreferences", Context.MODE_PRIVATE).getString("sortfield", "contactname");
-        String sortOrder = getSharedPreferences("MyContactListPreferences", Context.MODE_PRIVATE).getString("sortorder", "ASC");
+        String sortBy = getSharedPreferences("MemoListPreferences", Context.MODE_PRIVATE).getString("sortorder", "date");
 
-        ContactDataSource ds = new ContactDataSource(this);
+        MemoDataSource ds = new MemoDataSource(this);
         try {
             ds.open();
-            contacts = ds.getContacts(sortBy, sortOrder);
+            memos = ds.getMemos(sortBy);
             ds.close();
             if (contacts.size() > 0) {
                 ListView listView = getListView();

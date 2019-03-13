@@ -100,10 +100,10 @@ public class MemoDataSource {
     }
 
 
-    public ArrayList<Memo> getMemos(String sortField, String sortOrder) {
+    public ArrayList<Memo> getMemos(String sortField) {
         ArrayList<Memo> memos = new ArrayList<Memo>();
         try {
-            String query = "SELECT  * FROM memo ORDER BY " + sortField + " " + sortOrder;
+            String query = "SELECT  * FROM memo ORDER BY " + sortField;
 
             Cursor cursor = database.rawQuery(query, null);
 

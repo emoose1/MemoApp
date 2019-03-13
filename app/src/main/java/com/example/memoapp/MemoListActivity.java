@@ -63,7 +63,7 @@ public class MemoListActivity  extends ListActivity {
                 listView.setAdapter(adapter);
             }
             else {
-                Intent intent = new Intent(MemoListActivity.this, MemoActivity.class);
+                Intent intent = new Intent(MemoListActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         }
@@ -83,7 +83,7 @@ public class MemoListActivity  extends ListActivity {
                 if(isDeleting){
                     adapter.showDelete(position, view, MemoListActivity.this, selectedMemo);
                 } else{
-                    Intent intent = new Intent(MemoListActivity.this, MemoActivity.class);
+                    Intent intent = new Intent(MemoListActivity.this, MainActivity.class);
                     intent.putExtra("contactid", selectedMemo.getMemoID());
                     startActivity(intent);
                 }
@@ -95,7 +95,7 @@ public class MemoListActivity  extends ListActivity {
         Button newContact = (Button) findViewById(R.id.buttonAdd);
         newContact.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(MemoListActivity.this, MemoActivity.class);
+                Intent intent = new Intent(MemoListActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });

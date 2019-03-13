@@ -39,7 +39,7 @@ public class MemoAdapter extends ArrayAdapter<Memo> {
             TextView memoDate = (TextView) v.findViewById(R.id.textMemoDate);
             Button b = (Button) v.findViewById(R.id.buttonDeleteMemo);
             memoNotes.setText(memo.getMemoNotes());
-            memoDate.setText(memo.getDateCreated());
+            memoDate.setText(memo.getDateCreated().toString());
             b.setVisibility(View.INVISIBLE);
             
         }

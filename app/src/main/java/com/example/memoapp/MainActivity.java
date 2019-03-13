@@ -59,30 +59,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void initPriority() {
-           RadioGroup rgPriority = (RadioGroup) findViewById(R.id.radioGroupPriority);
-           rgPriority.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-
-               @Override
-               public void onCheckedChanged(RadioGroup arg0, int arg1) {
-                   RadioButton rbLow = (RadioButton) findViewById(R.id.low);
-                   RadioButton rbMedium = (RadioButton) findViewById(R.id.medium);
-                   RadioButton rbHigh = (RadioButton) findViewById(R.id.high);
-                   if (rbLow.isChecked()) {
-                      getSharedPreferences("MemoPriority", Context.MODE_PRIVATE).edit() .putString("sortfield", "low").commit();
-                       rbLow.setChecked(true);
-                   }
-                   else if (rbMedium.isChecked()) {
-                      getSharedPreferences("MemoPriority", Context.MODE_PRIVATE).edit().putString("sortfield", "medium").commit();
-                       rbMedium.setChecked(true);
-                   }
-                   else {
-                      getSharedPreferences("MemoPriority", Context.MODE_PRIVATE).edit().putString("sortfield", "high").commit();
-                       rbHigh.setChecked(true);
-                   }
-               }
-           });
-       }
 
     private void initSaveButton() {
         Button saveButton = (Button) findViewById(R.id.button2);
@@ -93,6 +69,28 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // hideKeyboard();
+                RadioGroup rgPriority = (RadioGroup) findViewById(R.id.radioGroupPriority);
+                rgPriority.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+
+                    @Override
+                    public void onCheckedChanged(RadioGroup arg0, int arg1) {
+                        RadioButton rbLow = (RadioButton) findViewById(R.id.low);
+                        RadioButton rbMedium = (RadioButton) findViewById(R.id.medium);
+                        RadioButton rbHigh = (RadioButton) findViewById(R.id.high);
+                        if (rbLow.isChecked()) {
+
+                            rbLow.setChecked(true); currentMemo.setPriorityID(1);
+                        }
+                        else if (rbMedium.isChecked()) {
+
+                            rbMedium.setChecked(true); currentMemo.setPriorityID(2);
+                        }
+                        else {
+
+                            rbHigh.setChecked(true); currentMemo.setPriorityID(3);
+                        }
+                    }
+                });
                 boolean wasSuccessful = false;
                 MemoDataSource ds = new MemoDataSource(MainActivity.this);
                 try {

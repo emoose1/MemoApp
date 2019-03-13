@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
 
 public class MainActivity extends AppCompatActivity {
     private Memo currentMemo;
@@ -23,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
         initListButton();
         initSaveButton();
         initTextChangedEvents();
-        initPriority();
 
         currentMemo = new Memo();
     }
@@ -69,15 +69,15 @@ public class MainActivity extends AppCompatActivity {
                    RadioButton rbMedium = (RadioButton) findViewById(R.id.medium);
                    RadioButton rbHigh = (RadioButton) findViewById(R.id.high);
                    if (rbLow.isChecked()) {
-                       getSharedPreferences("MemoPriority", Context.MODE_PRIVATE).edit() .putString("sortfield", "low").commit();
+                      getSharedPreferences("MemoPriority", Context.MODE_PRIVATE).edit() .putString("sortfield", "low").commit();
                        rbLow.setChecked(true);
                    }
                    else if (rbMedium.isChecked()) {
-                       getSharedPreferences("MemoPriority", Context.MODE_PRIVATE).edit().putString("sortfield", "medium").commit();
+                      getSharedPreferences("MemoPriority", Context.MODE_PRIVATE).edit().putString("sortfield", "medium").commit();
                        rbMedium.setChecked(true);
                    }
                    else {
-                       getSharedPreferences("MemoPriority", Context.MODE_PRIVATE).edit().putString("sortfield", "high").commit();
+                      getSharedPreferences("MemoPriority", Context.MODE_PRIVATE).edit().putString("sortfield", "high").commit();
                        rbHigh.setChecked(true);
                    }
                }
@@ -87,6 +87,8 @@ public class MainActivity extends AppCompatActivity {
     private void initSaveButton() {
         Button saveButton = (Button) findViewById(R.id.button2);
         saveButton.setOnClickListener(new View.OnClickListener() {
+
+
 
             @Override
             public void onClick(View v) {
@@ -115,6 +117,8 @@ public class MainActivity extends AppCompatActivity {
                     setForEditing(false);
                 }  */
             }
+
+
 
 
         });

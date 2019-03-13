@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -21,6 +22,11 @@ public class MemoListActivity  extends ListActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_memo_list);
+
+
+        initItemClick();
+        initDeleteButton();
+        
     }
 
     private void initDeleteButton() {
@@ -63,5 +69,23 @@ public class MemoListActivity  extends ListActivity {
             Toast.makeText(this, "Error retrieving contacts", Toast.LENGTH_LONG).show();
         }
 
+    }
+
+
+    private void initItemClick(){
+        ListView listView = (ListView) getListView();
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Memo selectedMemo = memos.get(position);
+                if(isDeleting){
+                    adapter.showDelete(position, view, MemoListActivity.this, selectedMemo);
+                } else{
+                    Intent intent = new Intent(MemoListActivity.this, MemoActivity.class);
+                    intent.putExtra("contactid", selectedMemo.getMemoID());
+                    startActivity(intent);
+                }
+            }
+        });
     }
 }

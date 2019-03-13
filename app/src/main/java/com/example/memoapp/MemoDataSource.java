@@ -25,7 +25,7 @@ public class MemoDataSource {
         dbHelper.close();
     }
 
-    public boolean insertContact(Memo c) {
+    public boolean insertMemo(Memo c) {
         boolean didSucceed = false;
         try {
             ContentValues initialValues = new ContentValues();
@@ -63,6 +63,41 @@ public class MemoDataSource {
         return didSucceed;
     }
 
+    public int getLastMemoID() {
+        int lastID = -1;
+        try {
+            String query = "Select MAX(_id) from memo";
+            Cursor cursor = database.rawQuery(query, null);
+
+            cursor.moveToFirst();
+            lastID = cursor.getInt(0);
+            cursor.close();
+        }
+        catch (Exception e) {
+            lastID = -1;
+        }
+        return lastID;
+    }
+
+    public ArrayList<String> getMemoNotes() {
+        ArrayList<String> memoNotes = new ArrayList
+                <String>();
+        try {
+            String query = "Select memoNotes from memo";
+            Cursor cursor = database.rawQuery(query, null);
+
+            cursor.moveToFirst();
+            while (!cursor.isAfterLast()) {
+                memoNotes.add(cursor.getString(0));
+                cursor.moveToNext();
+            }
+            cursor.close();
+        }
+        catch (Exception e) {
+            memoNotes = new ArrayList<String>();
+        }
+        return memoNotes;
+    }
 
 
     public ArrayList<Memo> getMemos(String sortField, String sortOrder) {
@@ -93,7 +128,8 @@ public class MemoDataSource {
         return memos;
     }
 
-    /* public boolean deleteMemo(int memoID) {
+
+    public boolean deleteMemo(int memoID) {
         boolean didDelete = false;
         try {
             didDelete = database.delete("memo", "_id=" + memoID, null) > 0;
@@ -103,23 +139,22 @@ public class MemoDataSource {
         return didDelete;
     }
 
-        public Memo getSpecificMemo (int memoID) {
-            Memo contact = new Memo();
-            String query = "SELECT  * FROM contact WHERE _id =" + memoID;
-            Cursor cursor = database.rawQuery(query, null);
+    public Memo getSpecificMemo (int memoID) {
+        Memo memo = new Memo();
+        String query = "SELECT  * FROM memo WHERE _id =" + memoID;
+        Cursor cursor = database.rawQuery(query, null);
 
-            if (cursor.moveToFirst()) {
-                Memo.setMemoID(cursor.getInt(0));
-                Memo.setMemoNotes(cursor.getString(1));
-                Calendar calendar = Calendar.getInstance();                         //2
-                calendar.setTimeInMillis(Long.valueOf(cursor.getString(2)));
-                Memo.setDateCreated(calendar);
-                Memo.setPriorityID(cursor.getInt(3));
+        if (cursor.moveToFirst()) {
+            memo.setMemoID(cursor.getInt(0));
+            memo.setMemoNotes(cursor.getString(1));
+            Calendar calendar = Calendar.getInstance();                         //2
+            calendar.setTimeInMillis(Long.valueOf(cursor.getString(2)));
+            memo.setDateCreated(calendar);
+            memo.setPriorityID(cursor.getInt(3));
 
-                cursor.close();
-            }
-            return memo;
+            cursor.close();
         }
- */
+        return memo;
+    }
 
 }

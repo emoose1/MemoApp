@@ -70,7 +70,7 @@ public class MemoListActivity  extends ListActivity {
             }
         }
         catch (Exception e) {
-            Toast.makeText(this, "Error retrieving contacts", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Error retrieving memos", Toast.LENGTH_LONG).show();
         }
 
     }
@@ -86,7 +86,7 @@ public class MemoListActivity  extends ListActivity {
                     adapter.showDelete(position, view, MemoListActivity.this, selectedMemo);
                 } else{
                     Intent intent = new Intent(MemoListActivity.this, MainActivity.class);
-                    intent.putExtra("contactid", selectedMemo.getMemoID());
+                    intent.putExtra("memoID", selectedMemo.getMemoID());
                     startActivity(intent);
                 }
             }

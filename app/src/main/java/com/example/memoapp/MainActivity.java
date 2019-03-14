@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
+import android.widget.ToggleButton;
 
 public class MainActivity extends AppCompatActivity {
     private Memo currentMemo;
@@ -95,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
                     if (currentMemo.getMemoID() == -1) {
                         wasSuccessful = ds.insertMemo(currentMemo);
                         int newId = ds.getLastMemoID();
-                        currentMemo.setMemoID(newId);
+                        currentMemo.setMemoID(newId+1);
                     } else {
                         wasSuccessful = ds.updateMemo(currentMemo);
                     }
@@ -105,11 +106,11 @@ public class MainActivity extends AppCompatActivity {
                     wasSuccessful = false;
                 }
 
-              /*  if (wasSuccessful) {
-                    ToggleButton editToggle = (ToggleButton) findViewById(R.id.toggleButtonEdit);
-                    editToggle.toggle();
-                    setForEditing(false);
-                }  */
+//               if (wasSuccessful) {
+//                    ToggleButton editToggle = (ToggleButton) findViewById(R.id.);
+//                    editToggle.toggle();
+//                    setForEditing(false);
+//                }
             }
 
 
@@ -117,5 +118,11 @@ public class MainActivity extends AppCompatActivity {
 
         });
     }
+
+//    private void setForEditing(boolean enabled) {
+//         EditText newMemo = (EditText) findViewById(R.id.editText);
+//         newMemo.setEnabled(enabled);
+//
+//    }
 }
 

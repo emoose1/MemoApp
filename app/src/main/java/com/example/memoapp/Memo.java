@@ -11,10 +11,20 @@ public class Memo {
 
 
     public Memo() {
-        memoID = getMemoID();
+        memoID = -1;
         dateCreated = Calendar.getInstance();
 
     }
+
+    /*public Memo(int memoID, String memoNotes, Calendar dateCreated, int priorityID){
+
+        this.memoID = memoID;
+        this.memoNotes = memoNotes;
+        this.dateCreated = dateCreated;
+        this.priorityID = priorityID;
+
+    }
+    */
 
     public int getMemoID() {
         return memoID;
@@ -34,6 +44,10 @@ public class Memo {
     public void setDateCreated(Calendar c) {
         this.dateCreated = c;
     }
-    public int getPriorityID(){return priorityID;}
-    public void setPriorityID(int i){this.priorityID = i;}
+    public int getPriorityID(){
+        return priorityID;
+    }
+    public void setPriorityID(int i){
+        this.priorityID = i;
+    }
 }

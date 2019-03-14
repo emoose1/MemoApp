@@ -14,7 +14,7 @@ public class MemoDatabaseHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "memo.db";
     private static final int DATABASE_VERSION = 1;
-    private static final String TABLE = "memo";
+    private static final String TABLE_Memo = "memo";
     private static final String COLUMN_MemoID = "memoID";
     private static final String COLUMN_MemoNotes = "memoNotes";
     private static final String COLUMN_MemoDate = "memoDate";
@@ -22,9 +22,10 @@ public class MemoDatabaseHelper extends SQLiteOpenHelper {
 
 
     private static final String CREATE_TABLE_MEMO =
-            "create table " + TABLE + "("
-            + COLUMN_MemoID + " integer primary key AUTOINCREMENT, " + COLUMN_MemoNotes
-            + " text not null," + COLUMN_MemoDate + "Calendar," + COLUMN_PriorityID + " int " + ")";
+            "create table TABLE_Memo(COLUMN_MemoID integer primary key AUTOINCREMENT,"
+            + "COLUMN_MemoNotes text not null,"
+            + "COLUMN_MemoDate Calendar,"
+            + "COLUMN_PriorityID int)";
 
     public MemoDatabaseHelper(Context context){
         super(context, DATABASE_NAME, null, DATABASE_VERSION);

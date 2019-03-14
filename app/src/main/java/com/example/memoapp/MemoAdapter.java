@@ -19,7 +19,7 @@ public class MemoAdapter extends ArrayAdapter<Memo> {
     private Context adapterContext;
 
     public MemoAdapter(Context context, ArrayList<Memo> items) {
-        super(context, R.layout.list_item, items);
+        super(context, R.layout.list_item_memo, items);
         adapterContext = context;
         this.items = items;
     }

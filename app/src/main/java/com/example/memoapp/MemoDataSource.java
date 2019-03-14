@@ -35,8 +35,6 @@ public class MemoDataSource {
             initialValues.put("memoDate", String.valueOf(c.getDateCreated().getTimeInMillis()));
             initialValues.put("priorityID", c.getPriorityID());
 
-
-
             didSucceed = database.insert("memo", null, initialValues) > 0;
         }
         catch (Exception e) {

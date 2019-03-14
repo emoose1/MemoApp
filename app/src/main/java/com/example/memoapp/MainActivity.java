@@ -64,9 +64,6 @@ public class MainActivity extends AppCompatActivity {
     private void initSaveButton() {
         Button saveButton = (Button) findViewById(R.id.button2);
         saveButton.setOnClickListener(new View.OnClickListener() {
-
-
-
             @Override
             public void onClick(View v) {
                 // hideKeyboard();
@@ -96,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
                     if (currentMemo.getMemoID() == -1) {
                         wasSuccessful = ds.insertMemo(currentMemo);
                         int newId = ds.getLastMemoID();
-                        currentMemo.setMemoID(newId+1);
+                        currentMemo.setMemoID(newId);
                     } else {
                         wasSuccessful = ds.updateMemo(currentMemo);
                     }

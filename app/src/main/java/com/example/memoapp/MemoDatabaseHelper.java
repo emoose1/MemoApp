@@ -32,8 +32,8 @@ public class MemoDatabaseHelper extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onCreate(SQLiteDatabase db) { db.execSQL(CREATE_TABLE_MEMO);
-
+    public void onCreate(SQLiteDatabase db) {
+        db.execSQL(CREATE_TABLE_MEMO);
     }
 
     @Override

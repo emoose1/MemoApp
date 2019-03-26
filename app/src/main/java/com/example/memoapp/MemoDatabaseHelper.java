@@ -13,7 +13,7 @@ import java.util.Calendar;
 public class MemoDatabaseHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "memo.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 3;
     private static final String TABLE_Memo = "memo";
     private static final String COLUMN_MemoID = "memoID";
     private static final String COLUMN_MemoNotes = "memoNotes";
@@ -22,10 +22,10 @@ public class MemoDatabaseHelper extends SQLiteOpenHelper {
 
 
     private static final String CREATE_TABLE_MEMO =
-            "create table TABLE_Memo(COLUMN_MemoID integer primary key AUTOINCREMENT,"
-            + "COLUMN_MemoNotes text not null,"
-            + "COLUMN_MemoDate Calendar,"
-            + "COLUMN_PriorityID int)";
+            "create table memo (memoID integer primary key autoincrement,"
+                    + " memoNotes text," +
+                    "memoDate long," +
+                    "priorityID string)";
 
     public MemoDatabaseHelper(Context context){
         super(context, DATABASE_NAME, null, DATABASE_VERSION);

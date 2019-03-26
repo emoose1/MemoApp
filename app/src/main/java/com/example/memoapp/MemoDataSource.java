@@ -30,7 +30,6 @@ public class MemoDataSource {
         try {
             ContentValues initialValues = new ContentValues();
 
-            initialValues.put("memoID", c.getMemoID());
             initialValues.put("memoNotes", c.getMemoNotes());
             initialValues.put("memoDate", String.valueOf(c.getDateCreated().getTimeInMillis()));
             initialValues.put("priorityID", c.getPriorityID());
@@ -49,7 +48,6 @@ public class MemoDataSource {
             Long rowId = (long) m.getMemoID();
             ContentValues updateValues = new ContentValues();
 
-            updateValues.put("memoID", m.getMemoID());
             updateValues.put("memoNotes", m.getMemoNotes());
             updateValues.put("memoDate", String.valueOf(m.getDateCreated().getTimeInMillis()));
             updateValues.put("priorityID", m.getPriorityID());

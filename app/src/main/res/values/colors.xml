@@ -3,10 +3,12 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
-    <color name="navbar_background">#00574B</color>
+    <color name="navbar_background">#1a1a48</color>
+    <color name="toolbar_background">#1a1a48</color>
+    <color name="dialog_button_color">#1a1a48</color>
+    <color name="backgroundWhite"> #ffffff</color>
+    <color name="backgroundOWhite"> #e3cece</color>
+    <color name="backgroundRed">#ff0000</color>
 
-    <color name="system_red">#ff0000</color>
-    <color name="system_transparent">#00000000</color>
-    <color name="system_blue">#0000ff</color>
 
 </resources>

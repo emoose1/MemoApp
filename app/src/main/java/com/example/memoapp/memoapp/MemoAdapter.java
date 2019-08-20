@@ -1,25 +1,26 @@
-package com.example.memoapp;
+package com.example.memoapp.memoapp;
 
-import android.widget.ArrayAdapter;
 import android.content.Context;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import java.util.ArrayList;
-import java.util.Calendar;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
 
 public class MemoAdapter extends ArrayAdapter<Memo> {
-
     private ArrayList<Memo> items;
     private Context adapterContext;
-
     public MemoAdapter(Context context, ArrayList<Memo> items) {
-        super(context, R.layout.list_item_memo, items);
+        super(context, R.layout.list_item, items);
         adapterContext = context;
         this.items = items;
     }
@@ -32,16 +33,34 @@ public class MemoAdapter extends ArrayAdapter<Memo> {
 
             if (v == null) {
                 LayoutInflater vi = (LayoutInflater) adapterContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                v = vi.inflate(R.layout.list_item_memo, null);
+                v = vi.inflate(R.layout.list_item, null);
             }
 
-            TextView memoNotes = (TextView) v.findViewById(R.id.textMemoTitle);
+            TextView memoNotes = (TextView) v.findViewById(R.id.textMem);
             TextView memoDate = (TextView) v.findViewById(R.id.textMemoDate);
+            TextView memoPriority = (TextView) v.findViewById(R.id.textPriority);
             Button b = (Button) v.findViewById(R.id.buttonDeleteMemo);
-            memoNotes.setText(memo.getMemoNotes());
-            memoDate.setText(memo.getDateCreated().toString());
+            String memoNote =        memo.getMemoNotes();
+            memoNotes.setText(memoNote);
+
+            memoPriority.setText(memo.getPriority());
+            memoNotes.setTextColor(ContextCompat.getColor(adapterContext,R.color.backgroundRed));
+
+
+
+            Date date=new Date(memo.getDateCreated());
+            SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd  'T'  HH:mm:ss.SSSZ");
+            String dateText = df2.format(date);
+
+            memoDate.setText(dateText);
+
+
+
+
+
+
             b.setVisibility(View.INVISIBLE);
-            
+
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -52,7 +71,7 @@ public class MemoAdapter extends ArrayAdapter<Memo> {
 
     public void showDelete(final int position, final View convertView,final Context context, final Memo memo) {
         View v = convertView;
-        final Button b = (Button) v.findViewById(R.id.buttonDeleteContact);
+        final Button b = (Button) v.findViewById(R.id.buttonDeleteMemo);
         //2
         if (b.getVisibility()==View.INVISIBLE) {
             b.setVisibility(View.VISIBLE);
@@ -85,7 +104,7 @@ public class MemoAdapter extends ArrayAdapter<Memo> {
     //4
     public void hideDelete(int position, View convertView, Context context) {
         View v = convertView;
-        final Button b = (Button) v.findViewById(R.id.buttonDeleteContact);
+        final Button b = (Button) v.findViewById(R.id.buttonDeleteMemo);
         b.setVisibility(View.INVISIBLE);
         b.setOnClickListener(null);
     }

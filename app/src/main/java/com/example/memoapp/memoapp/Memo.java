@@ -1,18 +1,19 @@
-package com.example.memoapp;
+package com.example.memoapp.memoapp;
 
 import java.util.Calendar;
+import java.util.Date;
 
 public class Memo {
     private int memoID;
     private String memoNotes;
-    private Calendar dateCreated;
-    private int priorityID;
+    private Long dateCreated;
+    private String priority;
 
 
 
     public Memo() {
         memoID = -1;
-        dateCreated = Calendar.getInstance();
+   dateCreated = new Date().getTime();
 
     }
 
@@ -38,16 +39,16 @@ public class Memo {
     public void setMemoNotes(String s) {
         this.memoNotes = s;
     }
-    public Calendar getDateCreated() {
+    public Long getDateCreated() {
         return dateCreated;
     }
-    public void setDateCreated(Calendar c) {
+    public void setDateCreated(Long c) {
         this.dateCreated = c;
     }
-    public int getPriorityID(){
-        return priorityID;
+    public String getPriority(){
+        return priority;
     }
-    public void setPriorityID(int i){
-        this.priorityID = i;
+    public void setPriority(String i){
+        this.priority = i;
     }
 }

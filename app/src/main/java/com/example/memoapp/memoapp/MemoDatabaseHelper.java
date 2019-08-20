@@ -1,31 +1,23 @@
-package com.example.memoapp;
+package com.example.memoapp.memoapp;
 
-import android.database.sqlite.SQLiteOpenHelper;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.DatabaseErrorHandler;
-import android.util.Log;
 import android.content.Context;
-import android.content.ContentValues;
-import java.util.Calendar;
-
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 
 public class MemoDatabaseHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "memo.db";
-    private static final int DATABASE_VERSION = 3;
-    private static final String TABLE_Memo = "memo";
-    private static final String COLUMN_MemoID = "memoID";
-    private static final String COLUMN_MemoNotes = "memoNotes";
-    private static final String COLUMN_MemoDate = "memoDate";
-    private static final String COLUMN_PriorityID = "priorityID";
+    private static final int DATABASE_VERSION = 1;
+
 
 
     private static final String CREATE_TABLE_MEMO =
             "create table memo (memoID integer primary key autoincrement,"
-                    + " memoNotes text," +
+             + " memoNotes text," +
                     "memoDate long," +
-                    "priorityID string)";
+                    "priority string)";
 
     public MemoDatabaseHelper(Context context){
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -44,4 +36,6 @@ public class MemoDatabaseHelper extends SQLiteOpenHelper {
     db.execSQL("DROP TABLE IF EXISTS memo");
     onCreate(db);
     }
+
+
 }
